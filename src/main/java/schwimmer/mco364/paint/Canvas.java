@@ -8,19 +8,24 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import javax.swing.JPanel;
 
 public class Canvas extends JPanel {
 
+	private static final int HEIGHT = 600;
+	private static final int WIDTH = 800;
+	
 	private BufferedImage buffer;
 	private Tool tool;
+	private PaintProperties properties;
 	
 	public Canvas() {
 		
-		tool = new LineTool();
-		
-		buffer = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
+		buffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+		properties = new PaintProperties(WIDTH, HEIGHT, buffer, Color.BLACK, 1, false);
+		tool = new LineTool(properties);
 		
 		addMouseListener(new MouseListener() {
 
@@ -82,6 +87,11 @@ public class Canvas extends JPanel {
 		
 		tool.drawPreview(g);
 		
+	}
+
+
+	public void setTool(Tool tool) {
+		this.tool = tool;
 	}
 
 	
