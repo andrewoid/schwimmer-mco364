@@ -21,10 +21,9 @@ public class Canvas extends JPanel {
 	private Tool tool;
 	private PaintProperties properties;
 	
-	public Canvas() {
-		
-		buffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
-		properties = new PaintProperties(WIDTH, HEIGHT, buffer, Color.BLACK, 1, false);
+	public Canvas(PaintProperties properties) {
+		this.properties = properties;
+		buffer = properties.getImage();
 		tool = new LineTool(properties);
 		
 		addMouseListener(new MouseListener() {
