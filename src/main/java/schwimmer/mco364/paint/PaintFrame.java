@@ -21,7 +21,7 @@ import com.google.inject.Injector;
 public class PaintFrame extends JFrame {
 
 	@Inject
-	public PaintFrame(PaintProperties properties) {
+	public PaintFrame(Canvas canvas, PaintToolbar toolbar) {
 		
 		setTitle("PaintFrame");
 		setSize(800,600);
@@ -30,30 +30,8 @@ public class PaintFrame extends JFrame {
 		Container container = getContentPane();
 		container.setLayout(new BorderLayout());
 		
-		final Canvas canvas = new Canvas(properties);
 		container.add(canvas, BorderLayout.CENTER);
-		
-		Container toolbar = new Container();
-		toolbar.setLayout( new FlowLayout() );
 		container.add(toolbar, BorderLayout.NORTH);
-		
-		ActionListener listener = new ActionListener() {
-
-			public void actionPerformed(ActionEvent event) {
-				ToolButton button = (ToolButton) event.getSource();
-				canvas.setTool(button.getTool());
-			}
-		};
-		
-		ToolButton buttons[] = new ToolButton[] {
-				new ToolButton(new PencilTool(properties), "/pencil_1.png"),
-		};
-		
-		for ( ToolButton button : buttons ) {
-			toolbar.add(button);
-			button.addActionListener(listener);
-		}
-		
 		
 		setVisible(true);
 		
@@ -61,7 +39,7 @@ public class PaintFrame extends JFrame {
 	
 	public static void main( String args[] ) {
 	    Injector injector = Guice.createInjector(new PaintModule());
-		PaintFrame frame = injector.getInstance(PaintFrame.class);
+		injector.getInstance(PaintFrame.class);
 	}
 	
 }

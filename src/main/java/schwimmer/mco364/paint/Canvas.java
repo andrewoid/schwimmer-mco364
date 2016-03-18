@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.JPanel;
 
+@Singleton
 public class Canvas extends JPanel {
 
 	private static final int HEIGHT = 600;
@@ -21,6 +24,7 @@ public class Canvas extends JPanel {
 	private Tool tool;
 	private PaintProperties properties;
 	
+	@Inject
 	public Canvas(PaintProperties properties) {
 		this.properties = properties;
 		buffer = properties.getImage();

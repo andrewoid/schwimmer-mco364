@@ -3,6 +3,9 @@ package schwimmer.mco364.paint;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
+import com.google.inject.Singleton;
+
+@Singleton
 public class PaintProperties {
 
 	private int width;
