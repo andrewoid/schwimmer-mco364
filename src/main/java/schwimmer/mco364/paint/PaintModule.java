@@ -12,6 +12,8 @@ public class PaintModule implements Module {
 		binder.bind(PaintProperties.class).toInstance(properties);
 
 		ToolButton buttons[] = new ToolButton[] {
+				new ToolButton(new LineTool(properties), "/straight_line.jpg"),
+				new ToolButton(new PencilTool(properties), "/pencil_1.png"),
 		};
 		
 		binder.bind(ToolButton[].class).toInstance(buttons);
