@@ -1,6 +1,8 @@
 package schwimmer.mco364.paint;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 
 import com.google.inject.Singleton;
@@ -12,7 +14,7 @@ public class PaintProperties {
 	private int height;
 	private BufferedImage image;
 	private Color color;
-	private int weight;
+	private BasicStroke stroke;
 	private boolean fill;
 	
 	public PaintProperties() {
@@ -21,7 +23,7 @@ public class PaintProperties {
 		image = new BufferedImage(this.width, this.height, 
 				BufferedImage.TYPE_INT_ARGB);
 		this.color = Color.BLACK;
-		this.weight = 1;
+		this.stroke = new BasicStroke(6);
 		this.fill = false;
 	}
 	
@@ -30,7 +32,7 @@ public class PaintProperties {
 		this.height = height;
 		this.image = image;
 		this.color = color;
-		this.weight = weight;
+		this.stroke = new BasicStroke(weight);
 		this.fill = fill;
 	}
 	
@@ -58,11 +60,11 @@ public class PaintProperties {
 	public void setColor(Color color) {
 		this.color = color;
 	}
-	public int getWeight() {
-		return weight;
+	public Stroke getStroke() {
+		return stroke;
 	}
 	public void setWeight(int weight) {
-		this.weight = weight;
+		this.stroke = new BasicStroke(weight);
 	}
 	public boolean isFill() {
 		return fill;
