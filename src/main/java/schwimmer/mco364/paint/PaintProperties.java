@@ -21,7 +21,7 @@ public class PaintProperties {
 		image = new BufferedImage(this.width, this.height, 
 				BufferedImage.TYPE_INT_ARGB);
 		this.color = Color.BLACK;
-		this.weight = 1;
+		this.weight = 6;
 		this.fill = false;
 	}
 	

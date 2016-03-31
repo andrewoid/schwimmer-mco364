@@ -29,7 +29,7 @@ public class Canvas extends JPanel {
 	public Canvas(PaintProperties properties) {
 		this.properties = properties;
 		buffer = properties.getImage();
-		tool = new LineTool(properties);
+		tool = new PencilTool(properties);
 		
 		addMouseListener(new MouseListener() {
 
