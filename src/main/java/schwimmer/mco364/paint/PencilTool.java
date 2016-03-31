@@ -17,7 +17,7 @@ public class PencilTool extends Tool {
 
 	public void mousePressed(Graphics2D g, int x, int y) {
 		g.setColor(properties.getColor());
-		g.setStroke(new BasicStroke(properties.getWeight()));
+		g.setStroke(properties.getStroke());
 		g.fillOval(x, y, 1, 1);
 		this.x = x;
 		this.y = y;
@@ -29,7 +29,7 @@ public class PencilTool extends Tool {
 
 	public void mouseDragged(Graphics2D g, int x, int y) {
 		g.setColor(properties.getColor());
-		g.setStroke(new BasicStroke(properties.getWeight()));
+		g.setStroke(properties.getStroke());
 		g.drawLine(this.x, this.y, x, y);
 		this.x = x;
 		this.y = y;
