@@ -6,7 +6,7 @@ public class LongLong {
 	 
 	static {
 		for ( int i=0; i<MASKS.length; i++ ) {
-			MASKS[i] = 1 << i;
+			MASKS[i] = 1L << i;
 		}
 	}
 	
@@ -48,8 +48,28 @@ public class LongLong {
 	
 	public void orShiftLeft( LongLong other, int n ) {
 		high |= (other.high << n);
-		high |= (other.low >> (64-n));
+		high |= (other.low >>> (64-n));
 		low |= (other.low << n);
+	}
+	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("[");
+		for ( int i=1; i<101; i++ ) {
+			if ( get(i) ) {
+				builder.append(i);
+				builder.append(", ");
+			}
+		}
+		builder.append("]");
+		
+		return builder.toString();
+		//return Long.toHexString(high) + " " + Long.toHexString(low);
+	}
+
+	public void copy(LongLong other) {
+		high = other.high;
+		low = other.low;
 	}
 	
 }
